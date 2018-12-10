@@ -1,0 +1,13 @@
+html,
+body,
+#app {
+  background: hsl(0, 0%, 95%);
+  font-family: sans-serif;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+.top-menu {
+  background: gray;
+}
