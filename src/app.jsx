@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { Switch, Route } from 'react-router';
-import { Link } from 'react-router-dom';
-import './app.css';
+import './app.scss';
 import Dashboard from './dashboard';
 import Workouts from './workouts';
 
