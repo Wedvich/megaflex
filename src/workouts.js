@@ -5,7 +5,8 @@ import ExerciseCard from './exerciseCard';
 const exercises = [
   'Deadlifts',
   'Nordic hamstrings',
-  'Squats'
+  'Squats',
+  'Cakes'
 ];
 
 export default class Workouts extends Component {

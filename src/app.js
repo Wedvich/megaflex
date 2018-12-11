@@ -9,17 +9,10 @@ import Workouts from './workouts';
 class App extends Component {
   render() {
     return (
-      <>
-        <ul className="top-menu">
-          <li><Link to="/">Dashboard</Link></li>
-          <li></li>
-          <li><Link to="/workouts">Workouts</Link></li>
-        </ul>
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path="/workouts" component={Workouts} />
-        </Switch>
-      </>
+      <Switch>
+        <Route exact path="/" component={Dashboard} />
+        <Route path="/workouts" component={Workouts} />
+      </Switch>
     );
   }
 }

@@ -1,13 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'react-redux';
+import initializeStore from './initializeStore';
 import App from './app';
 import 'normalize.css';
 
+const { store, history } = initializeStore();
+
 render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById('app')
 );
 

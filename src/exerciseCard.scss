@@ -12,8 +12,12 @@
 
   .set {
     display: flex;
+    align-items: center;
+    justify-content: space-around;
 
     input {
+      border: 1px solid gray;
+      text-align: center;
       width: 20%;
     }
   }
