@@ -33,14 +33,14 @@ export default class ExerciseCard extends Component {
             <span>Set {i + 1}</span>
             <label>Reps</label>
             <input type="number" />
-            <label>kg</label>
             <label>Weight</label>
             <input type="number" />
             <label>kg</label>
-            <button onClick={() => this.removeSet(s.id)}>Remove</button>
+            <button onClick={() => this.removeSet(s.id)}>x</button>
           </div>
         ))}
         <div className="menu">
+          <button className="tertiary">Remove exercise</button>
           <button onClick={this.addSet}>Add set</button>
         </div>
       </div>

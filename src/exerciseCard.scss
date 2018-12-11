@@ -1,3 +1,5 @@
+@import 'colors', 'fonts';
+
 .exercise-card {
   align-items: center;
   background: hsl(0, 0%, 100%);
@@ -7,13 +9,46 @@
   margin: 1em;
 
   .name {
+    @extend %font-heading;
     padding: 1em;
+  }
+
+  .menu {
+    padding: 0.5em;
+    text-align: right;
+  }
+
+  button {
+    @extend %font-heading;
+    background: hsl(0, 0%, 90%);
+    border: none;
+    border-radius: 3px;
+    padding: 0.5em;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.secondary {
+      background: none;
+      color: $text-color-secondary;
+      border: 2px solid hsl(0, 0%, 90%);
+      margin-right: 0.5em;
+      padding: calc(0.5em - 2px);
+    }
+
+    &.tertiary {
+      background: none;
+      color: $text-color-tertiary;
+      margin-right: 0.5em;
+    }
   }
 
   .set {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0.5em 1em;
 
     input {
       border: 1px solid gray;

@@ -1,3 +1,7 @@
+@import 'colors', 'fonts';
+
 .page-bar {
-  padding: 1em;
+  @extend %font-heading;
+  font-size: 1.5em;
+  padding: 1rem;
 }

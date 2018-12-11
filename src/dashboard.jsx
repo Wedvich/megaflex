@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PageBar from './pageBar';
+import Button from './common/button';
+import { createWorkout } from './workouts';
 
+const mapDispatchToProps = {
+  createWorkout
+};
+
+@connect(undefined, mapDispatchToProps)
 export default class Dashboard extends Component {
   render() {
     return (
-      <div>
-        <Link to="/workouts">Workouts</Link>
-        <div>This is the dashboard page</div>
-      </div>
-    );
+      <>
+        <PageBar title="Dashboard" />
+        <div style={{ 'padding': '0 1em' }}>
+          <Button label="New workout" clickHandler={this.props.createWorkout} />
+        </div>
+      </>
+    )
   }
 }
