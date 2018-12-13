@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PageBar from './pageBar';
 import Button from './common/button';
+import TopBar from './common/topBar';
 import { createWorkout } from './workouts';
+import { hotConnect } from './common/utils';
 
 const mapDispatchToProps = {
   createWorkout
 };
 
-@connect(undefined, mapDispatchToProps)
+@hotConnect(() => ({}), mapDispatchToProps)
 export default class Dashboard extends Component {
   render() {
     return (
       <>
-        <PageBar title="Dashboard" />
+        <TopBar />
         <div style={{ 'padding': '0 1em' }}>
-          <Button label="New workout" clickHandler={this.props.createWorkout} />
+          <Button label="New workout" />{/* clickHandler={this.props.createWorkout} */}
         </div>
       </>
     )

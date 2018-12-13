@@ -8,7 +8,7 @@ require('dotenv').config();
 module.exports = () => ({
   mode: process.env.NODE_ENV,
   devtool: 'cheap-module-source-map',
-  entry: path.resolve(__dirname, 'src/index.jsx'),
+  entry: path.resolve(__dirname, 'src/index'),
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss']
   },

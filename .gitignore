@@ -63,3 +63,6 @@ typings/
 # secrets
 *.crt
 *.key
+
+# VS Code workspace settings
+.vscode
