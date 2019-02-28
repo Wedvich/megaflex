@@ -11,4 +11,5 @@ steps:
 - script: yarn build
 
 - task: PublishPipelineArtifact@0
-  targetPath: dist
+  inputs:
+    targetPath: dist
