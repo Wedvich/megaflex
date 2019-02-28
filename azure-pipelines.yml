@@ -3,13 +3,17 @@ pool:
 
 steps:
 - task: NodeTool@0
+  displayName: Use Node.js LTS version
   inputs:
     versionSpec: '10.x'
 
 - script: yarn install
+  displayName: Install dependencies
 
 - script: yarn build
+  displayName: Build application
 
 - task: PublishPipelineArtifact@0
+  displayName: Publish build artifacts
   inputs:
     targetPath: dist
