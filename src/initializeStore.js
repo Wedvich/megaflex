@@ -3,16 +3,13 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
-import { reducer as workoutsReducer } from './workouts';
-import workoutsSaga from './workouts/saga';
 
 const composeEnhancers =
   (process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
   || compose;
 
 const createRootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-  workouts: workoutsReducer
+  router: connectRouter(history)
 });
 
 const createRootSaga = () => function* rootSaga() {
