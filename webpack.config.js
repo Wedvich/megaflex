@@ -1,71 +1,87 @@
-const path = require('path');
-const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 require('dotenv').config();
 
-module.exports = () => {
-  const config = {
-    mode: process.env.NODE_ENV,
-    devtool: 'cheap-module-source-map',
-    entry: path.resolve(__dirname, 'src/index'),
-    resolve: {
-      extensions: ['.js', '.jsx', '.css', '.scss']
-    },
-    module: {
-      rules: [{
-        test: /\.s?css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-      }, {
-        test: /\.jsx?$/,
+const path = require('path');
+const fs = require('fs');
+const HtmlPlugin = require('html-webpack-plugin');
+const WebpackBar = require('webpackbar');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const entry = ['./src/index.tsx'];
+if (!isProduction) {
+  entry.unshift('react-hot-loader/patch');
+}
+
+const plugins = [
+  new HtmlPlugin({
+    template: './src/index.html',
+  }),
+  new WebpackBar(),
+];
+
+if (isProduction) {
+  plugins.push(new MiniCssExtractPlugin());
+}
+
+if (process.env.ANALYZE) {
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      defaultSizes: 'gzip',
+      generateStatsFile: true,
+      reportFilename: path.resolve(__dirname, 'analysis/report.html'),
+      statsFilename: path.resolve(__dirname, 'analysis/stats.json'),
+    }),
+  );
+}
+
+const stats = {
+  children: false,
+  modules: false,
+};
+
+module.exports = {
+  mode: isProduction ? 'production' : 'development',
+  devtool: isProduction ? 'source-map' : 'eval-source-map',
+  entry,
+  module: {
+    rules: [
+      {
+        test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', {
-                targets: {
-                  esmodules: true
-                }
-              }],
-              '@babel/preset-react'
-            ],
-            plugins: [
-              ['@babel/plugin-proposal-decorators', { legacy: true }],
-              '@babel/plugin-proposal-class-properties',
-              'react-hot-loader/babel'
-            ]
-          }
-        }
-      }]
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src/index.html')
-      }),
-      new ScriptExtHtmlWebpackPlugin({
-        module: /main\.js$/
-      })
-    ]
-  };
-
-  if (process.env.NODE_ENV === 'development') {
-    config.devServer = {
-      hot: true,
-      open: true,
-      compress: true,
-      https: {
-        key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-        cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+        use: 'babel-loader',
       },
-      historyApiFallback: true
-    };
-  }
-
-  return config;
+      {
+        test: /\.css$/,
+        use: [
+          !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { sourceMap: true } },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      'react-dom': !isProduction ? '@hot-loader/react-dom' : 'react-dom',
+    },
+  },
+  plugins,
+  stats,
+  devServer: {
+    compress: isProduction,
+    historyApiFallback: true,
+    hot: !isProduction,
+    http2: true,
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
+    },
+    open: true,
+    stats,
+  },
 };

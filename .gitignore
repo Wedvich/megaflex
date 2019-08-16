@@ -64,5 +64,11 @@ typings/
 *.crt
 *.key
 
-# VS Code workspace settings
-.vscode
+# macOS stuff
+.DS_Store
+
+# Webpack Bundle Analyzer output
+analysis/
+
+# Build output
+dist
