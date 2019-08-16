@@ -14,7 +14,7 @@ steps:
   displayName: Build application
 
 - script: yarn test:ci
-  dispalyName: Run tests
+  displayName: Run tests
 
 - task: PublishPipelineArtifact@0
   displayName: Publish build artifacts
