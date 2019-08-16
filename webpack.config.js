@@ -44,7 +44,7 @@ const stats = {
   modules: false,
 };
 
-module.exports = {
+const config = {
   mode: isProduction ? 'production' : 'development',
   devtool: isProduction ? 'source-map' : 'eval-source-map',
   entry,
@@ -72,7 +72,10 @@ module.exports = {
   },
   plugins,
   stats,
-  devServer: {
+};
+
+if (!isProduction) {
+  config.devServer = {
     compress: isProduction,
     historyApiFallback: true,
     hot: !isProduction,
@@ -83,5 +86,7 @@ module.exports = {
     },
     open: true,
     stats,
-  },
-};
+  };
+}
+
+module.exports = config;
