@@ -16,8 +16,12 @@ steps:
 - script: yarn test:ci
   displayName: Run tests
 
-- task: PublishPipelineArtifact@0
+- task: PublishTestResults@2
+  displayName: Publish test results
+  inputs:
+    testResultsFiles: 'junit.xml'
+
+- task: PublishPipelineArtifact@1
   displayName: Publish build artifacts
   inputs:
-    artifactName: dist
-    targetPath: dist
+    artifact: dist

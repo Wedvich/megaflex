@@ -70,5 +70,6 @@ typings/
 # Webpack Bundle Analyzer output
 analysis/
 
-# Build output
+# Build/test output
 dist
+junit.xml
