@@ -21,8 +21,8 @@ steps:
   inputs:
     testResultsFiles: 'junit.xml'
 
-- task: PublishPipelineArtifact@0
+- task: PublishPipelineArtifact@1
   displayName: Publish build artifacts
   inputs:
-    artifactName: dist
-    targetPath: $(Pipeline.Workspace)
+    artifact: dist
+    path: dist
