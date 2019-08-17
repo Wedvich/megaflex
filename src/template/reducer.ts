@@ -1,37 +1,32 @@
 import { Reducer } from 'redux';
 import { actionTypes } from './actions';
-import { TemplateModel } from './model';
+import { ExerciseModel, TemplateModel } from './model';
 
 interface TemplateState {
+  currentTemplate: TemplateModel;
   templates: TemplateModel[];
 }
 
+const initialTemplate = new TemplateModel();
 const initialState: TemplateState = {
-  templates: [
-    {
-      name: 'Test Template',
-      exercises: [],
-    },
-  ],
+  currentTemplate: { ...initialTemplate },
+  templates: [initialTemplate],
 };
+
+initialState.currentTemplate = initialState.templates[0];
 
 const templateReducer: Reducer<TemplateState> = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AddExercise: {
-      const templateIndex = 0;
-      const template = state.templates[templateIndex];
-      const exercises = [...template.exercises, { name: 'New Exercise' }];
+      const { currentTemplate } = state;
+      const exercises = [...currentTemplate.exercises, new ExerciseModel()];
 
       return {
         ...state,
-        templates: [
-          ...state.templates.slice(0, templateIndex),
-          {
-            ...template,
-            exercises,
-          },
-          ...state.templates.slice(templateIndex + 1),
-        ],
+        currentTemplate: {
+          ...currentTemplate,
+          exercises,
+        },
       };
     }
 

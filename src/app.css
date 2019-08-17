@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: #001f3f;
+  font-size: 16px;
+}
+
+.button--primary {
+  background: #0074d9;
+  border: none;
+  border-radius: .25em;
+  color: white;
+  outline: none;
+  padding: .75em;
+}
+
+.button--disabled {
+  background: #aaa;
+  color: #001f3f;
+}

@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import Template from './template/Template';
 
+import './app.css';
+
 const store = configureStore();
 
 const App = () => (
