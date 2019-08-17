@@ -1,10 +1,16 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import { Provider } from 'react-redux';
+
+import configureStore from './store';
+import Template from './template/Template';
+
+const store = configureStore();
 
 const App = () => (
-  <div id="app">
-    <span>App</span>
-  </div>
+  <Provider store={store}>
+    <Template />
+  </Provider>
 );
 
 export default hot(App);

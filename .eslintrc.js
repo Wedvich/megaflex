@@ -6,35 +6,38 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'prettier/@typescript-eslint',
+    'prettier/react'
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module',
     ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true
     }
   },
   plugins: [
-    "react-hooks",
+    'react-hooks',
   ],
   rules: {
-    "@typescript-eslint/explicit-function-return-type": "off"
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'sort-imports': ['warn', {
+      ignoreDeclarationSort: true,
+    }],
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
-    "react": {
-        version: "detect",
+    'react': {
+        version: 'detect',
     },
   }
 };
