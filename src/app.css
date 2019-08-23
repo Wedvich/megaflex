@@ -3,21 +3,41 @@
 }
 
 body {
-  background: #fff;
-  color: #001f3f;
-  font-size: 16px;
-}
-
-.button--primary {
-  background: #0074d9;
-  border: none;
-  border-radius: .25em;
+  background: hsl(240, 33%, 16%);
   color: white;
-  outline: none;
-  padding: .75em;
+  font-family: 'Livvic', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
 }
 
-.button--disabled {
-  background: #aaa;
-  color: #001f3f;
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+ul {
+  list-style: none;
+  margin: 20px;
+  padding: 0;
+}
+
+li {
+  background: hsl(240, 17%, 29%);
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 10px 20px;
+}
+
+span.title {
+  display: block;
+  font-weight: 500;
+}
+
+span.synopsis {
+  display: block;
+  font-size: 90%;
+  opacity: .6;
 }

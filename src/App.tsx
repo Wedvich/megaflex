@@ -1,18 +1,26 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Provider } from 'react-redux';
-
-import configureStore from './store';
-import Template from './template/Template';
 
 import './app.css';
 
-const store = configureStore();
-
 const App = () => (
-  <Provider store={store}>
-    <Template />
-  </Provider>
+  <>
+    <h1>Chest</h1>
+    <ul>
+      <li>
+        <span className="title">Bench Press</span>
+        <span className="synopsis">4 sets &#183; 6 reps &#183; 70 kg</span>
+      </li>
+      <li>
+        <span className="title">Incline Bench Press</span>
+        <span className="synopsis">3 sets &#183; 10 reps &#183; 50 kg</span>
+      </li>
+      <li>
+        <span className="title">Decline Bench Press</span>
+        <span className="synopsis">3 sets &#183; 10 reps &#183; 50 kg</span>
+      </li>
+    </ul>
+  </>
 );
 
 export default hot(App);

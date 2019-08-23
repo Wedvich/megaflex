@@ -1,7 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import 'normalize.css';
 
+import configureStore from './store';
 import App from './App';
 
-render(<App />, document.getElementById('app-container'));
+const store = configureStore();
+
+const Root = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+render(<Root />, document.getElementById('app-container'));
