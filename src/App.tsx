@@ -1,26 +1,29 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
-import './app.css';
+import './app.scss';
+
+const Exercise = ({ title, synopsis }) => (
+  <li className="exercise">
+    <div className="icon"></div>
+    <div className="info">
+      <span className="title">{title}</span>
+      <span className="synopsis">{synopsis}</span>
+    </div>
+  </li>
+);
+
+// ·
 
 const App = () => (
-  <>
+  <div className="page">
     <h1>Chest</h1>
     <ul>
-      <li>
-        <span className="title">Bench Press</span>
-        <span className="synopsis">4 sets &#183; 6 reps &#183; 70 kg</span>
-      </li>
-      <li>
-        <span className="title">Incline Bench Press</span>
-        <span className="synopsis">3 sets &#183; 10 reps &#183; 50 kg</span>
-      </li>
-      <li>
-        <span className="title">Decline Bench Press</span>
-        <span className="synopsis">3 sets &#183; 10 reps &#183; 50 kg</span>
-      </li>
+      <Exercise title="Bench Press" synopsis="4 sets · 6 reps · 70 kg" />
+      <Exercise title="Incline Bench Press" synopsis="3 sets · 10 reps · 50 kg" />
+      <Exercise title="Decline Bench Press" synopsis="3 sets · 10 reps · 50 kg" />
     </ul>
-  </>
+  </div>
 );
 
 export default hot(App);

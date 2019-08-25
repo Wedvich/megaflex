@@ -1,0 +1,67 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: hsl(240, 33%, 16%);
+  color: white;
+  font-family: 'Livvic', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  line-height: 150%;
+}
+
+#app-container {
+  height: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 200%;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: 64px;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0 20px;
+  padding: 0;
+}
+
+.exercise {
+  display: flex;
+  margin: 20px 0;
+}
+
+.exercise .icon {
+  background: hsl(240, 17%, 29%);
+  border-radius: 10px;
+  height: 68px;
+  text-align: center;
+  width: 68px;
+}
+
+.exercise .info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+span.title {
+  font-weight: 500;
+}
+
+span.synopsis {
+  font-size: 90%;
+  opacity: .6;
+}
