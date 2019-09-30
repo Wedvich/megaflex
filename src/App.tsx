@@ -1,29 +1,66 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import './app.scss';
+import './app2.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { Exercise, RootState } from './store/rootReducer';
+import { pluralize } from './common/utils';
 
-const Exercise = ({ title, synopsis }) => (
-  <li className="exercise">
-    <div className="icon"></div>
-    <div className="info">
-      <span className="title">{title}</span>
-      <span className="synopsis">{synopsis}</span>
-    </div>
-  </li>
-);
+const ExerciseListItem = SortableElement(({ value, prefix }: any) => {
+  return (
+    <li className="exercise-list-item">
+      <div>
+        <div className="exercise-list-item__label">
+          <span className="exercise-list-item__prefix">{prefix}</span>
+          {pluralize(value.name)}
+        </div>
+        <div className="exercise-list-item__subtitle">{value.subtitle}</div>
+      </div>
+    </li>
+  );
+});
 
-// ·
-
-const App = () => (
-  <div className="page">
-    <h1>Chest</h1>
-    <ul>
-      <Exercise title="Bench Press" synopsis="4 sets · 6 reps · 70 kg" />
-      <Exercise title="Incline Bench Press" synopsis="3 sets · 10 reps · 50 kg" />
-      <Exercise title="Decline Bench Press" synopsis="3 sets · 10 reps · 50 kg" />
+const ExerciseList = SortableContainer(({ items }: { items: Exercise[] }) => {
+  return (
+    <ul className="exercise-list">
+      {items.map((item, index) => (
+        <ExerciseListItem
+          key={`exercise-${item.id}`}
+          index={index}
+          value={item}
+          prefix={String.fromCodePoint(65 + index)}
+        />
+      ))}
     </ul>
-  </div>
-);
+  );
+});
+
+const App = () => {
+  const exercises = useSelector<RootState, any[]>(state => state.exercises);
+  const dispatch = useDispatch();
+
+  const onSortEnd = useCallback(
+    ({ oldIndex, newIndex }) => {
+      dispatch({ type: 'reorder', oldIndex, newIndex });
+    },
+    [dispatch],
+  );
+
+  const onResetClicked = () => {
+    localStorage.clear();
+    location.reload();
+  };
+
+  return (
+    <>
+      <ExerciseList items={exercises} onSortEnd={onSortEnd} helperClass="exercise-list-item dragging" lockAxis="y" />
+      <button className="reset-button" onClick={onResetClicked}>
+        Reset
+      </button>
+    </>
+  );
+};
 
 export default hot(App);

@@ -1,0 +1,39 @@
+.exercise-list {
+  margin: 0;
+  padding: 0;
+}
+
+.exercise-list-item {
+  background-color: white;
+  color: black;
+  list-style: none;
+  margin-bottom: 2px;
+  padding: 16px;
+
+  &__subtitle {
+    font-size: 90%;
+    opacity: .9;
+  }
+
+  &__label {
+    font-weight: 500;
+  }
+
+  &__prefix {
+    font-weight: 700;
+    margin-right: 1em;
+  }
+
+  &.dragging {
+    box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+  }
+}
+
+.reset-button {
+  background-color: hsl(240, 17%, 29%);
+  border: none;
+  color: white;
+  margin: 32px;
+  width: 100px;
+  padding: 8px;
+}
