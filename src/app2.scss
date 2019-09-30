@@ -4,15 +4,16 @@
 }
 
 .exercise-list-item {
+  align-items: center;
   background-color: white;
   color: black;
+  display: flex;
   list-style: none;
   margin-bottom: 2px;
-  padding: 16px;
+  padding: 16px 8px;
 
   &__subtitle {
     font-size: 90%;
-    opacity: .9;
   }
 
   &__label {
@@ -22,6 +23,12 @@
   &__prefix {
     font-weight: 700;
     margin-right: 1em;
+  }
+
+  &__drag-handle {
+    color: hsl(240, 17%, 29%);
+    margin-right: 8px;
+    padding: 8px;
   }
 
   &.dragging {
