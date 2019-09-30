@@ -10,7 +10,11 @@
   display: flex;
   list-style: none;
   margin-bottom: 2px;
-  padding: 16px 8px;
+
+  &__content {
+    flex-grow: 1;
+    padding: 16px;
+  }
 
   &__subtitle {
     font-size: 90%;
@@ -27,8 +31,7 @@
 
   &__drag-handle {
     color: hsl(240, 17%, 29%);
-    margin-right: 8px;
-    padding: 8px;
+    padding: 16px;
   }
 
   &.dragging {

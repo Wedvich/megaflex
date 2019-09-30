@@ -8,13 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Exercise, RootState } from './store/rootReducer';
 import { pluralize } from './common/utils';
 
+import { Modal, useModal } from './modal';
+
 const ExerciseListItemDragHandle = SortableHandle(() => <span className="exercise-list-item__drag-handle">☰</span>);
 
-const ExerciseListItem = SortableElement(({ value, prefix }: any) => {
+const ExerciseListItem = SortableElement(({ value, prefix, onClick }: any) => {
   return (
     <li className="exercise-list-item">
       <ExerciseListItemDragHandle />
-      <div>
+      <div className="exercise-list-item__content" onClick={onClick}>
         <div className="exercise-list-item__label">
           <span className="exercise-list-item__prefix">{prefix}</span>
           {pluralize(value.name)}
@@ -26,17 +28,24 @@ const ExerciseListItem = SortableElement(({ value, prefix }: any) => {
 });
 
 const ExerciseList = SortableContainer(({ items }: { items: Exercise[] }) => {
+  const [isModalOpen, openModal, closeModal] = useModal();
   return (
-    <ul className="exercise-list">
-      {items.map((item, index) => (
-        <ExerciseListItem
-          key={`exercise-${item.id}`}
-          index={index}
-          value={item}
-          prefix={String.fromCodePoint(65 + index)}
-        />
-      ))}
-    </ul>
+    <>
+      <ul className="exercise-list">
+        {items.map((item, index) => (
+          <ExerciseListItem
+            key={`exercise-${item.id}`}
+            index={index}
+            value={item}
+            prefix={String.fromCodePoint(65 + index)}
+            onClick={openModal}
+          />
+        ))}
+      </ul>
+      <Modal isOpen={isModalOpen} close={closeModal}>
+        <div>Silly modal</div>
+      </Modal>
+    </>
   );
 });
 

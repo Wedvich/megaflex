@@ -2,6 +2,7 @@ import { Reducer, combineReducers } from 'redux';
 
 import template from '../template/reducer';
 import { arrayMove } from '../common/utils';
+import { reducer as modal } from '../modal';
 
 export interface Exercise {
   id: string;
@@ -60,6 +61,7 @@ const exercises: Reducer<Exercise[]> = (state = initialExercises, action) => {
 
 const rootReducer = combineReducers({
   exercises,
+  modal,
   template,
 });
 
