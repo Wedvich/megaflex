@@ -72,7 +72,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
     alias: {
       'react-dom': !isProduction ? '@hot-loader/react-dom' : 'react-dom',
     },
