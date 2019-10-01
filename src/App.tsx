@@ -6,6 +6,7 @@ import { WorkoutExerciseList, actions as workoutsActions } from './workouts';
 
 import './app.scss';
 import { WorkoutModel } from './workouts/types';
+import { pluralize } from './common/utils';
 
 const App = () => {
   const workoutId = '2';
@@ -24,6 +25,20 @@ const App = () => {
     location.reload();
   };
 
+  // TODO: Refactor this into something sensible
+  const onCopyClicked = useCallback(() => {
+    if ('clipboard' in navigator) {
+      const data = workout.exercises
+        .map((exercise, index) => {
+          const prefix = String.fromCodePoint(65 + index);
+          const name = pluralize(exercise.name).toLowerCase();
+          return `${prefix}: ${exercise.sets}x${exercise.reps} ${name}`;
+        })
+        .join('\n');
+      navigator.clipboard.writeText(data);
+    }
+  }, [workout]);
+
   return (
     <>
       <WorkoutExerciseList
@@ -35,9 +50,14 @@ const App = () => {
         useWindowAsScrollContainer
         workoutId={workoutId}
       />
-      <button className="reset-button" onClick={onResetClicked}>
-        Reset
-      </button>
+      <div className="button-group">
+        <button className="reset-button" onClick={onResetClicked}>
+          Reset
+        </button>
+        <button className="reset-button" onClick={onCopyClicked}>
+          Clipboard
+        </button>
+      </div>
     </>
   );
 };

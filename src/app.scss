@@ -126,7 +126,13 @@ span.summary {
   background-color: hsl(240, 17%, 29%);
   border: none;
   color: white;
-  margin: 32px;
   width: 100px;
-  padding: 8px;
+  padding: 12px 8px;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 32px;
 }
