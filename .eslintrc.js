@@ -27,6 +27,7 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-empty-interface': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
     'react/prop-types': 'off',
     'sort-imports': ['warn', {

@@ -3,6 +3,7 @@ import { Reducer, combineReducers } from 'redux';
 import template from '../template/reducer';
 import { arrayMove } from '../common/utils';
 import { reducer as modal } from '../modal';
+import { reducer as workouts } from '../workouts';
 
 export interface Exercise {
   id: string;
@@ -12,37 +13,37 @@ export interface Exercise {
 
 const initialExercises: Exercise[] = [
   {
-    id: 'db squat',
+    id: 'db-squat',
     name: 'Dumbbell squat',
     subtitle: '3 sets · 15 reps · 50 kg',
   },
   {
-    id: 'leg extension',
+    id: 'leg-extension',
     name: 'Leg extension',
     subtitle: '3 sets · 25-20-15 reps · 50 kg',
   },
   {
-    id: 'hack squat',
+    id: 'hack-squat',
     name: 'Hack squat',
     subtitle: '3 sets · 15 reps · 50 kg',
   },
   {
-    id: 'leg press',
+    id: 'leg-press',
     name: 'Leg press',
     subtitle: '3 sets · 8 reps · 150 kg',
   },
   {
-    id: 'standing leg curl',
+    id: 'standing-leg-curl',
     name: 'Standing leg curl',
     subtitle: '3 sets · 25 reps · 40 kg',
   },
   {
-    id: 'standing calf raise',
+    id: 'standing-calf-raise',
     name: 'Standing calf raise',
     subtitle: '4 sets · 20 reps · 20 kg',
   },
   {
-    id: 'seated calf raise',
+    id: 'seated-calf-raise',
     name: 'Seated calf raise',
     subtitle: '3 sets · 15 reps · 40 kg',
   },
@@ -63,6 +64,7 @@ const rootReducer = combineReducers({
   exercises,
   modal,
   template,
+  workouts,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
