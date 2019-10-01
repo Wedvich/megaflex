@@ -1,0 +1,9 @@
+{
+  "background_color": "#1b1b36",
+  "description": "",
+  "display": "standalone",
+  "name": "Megaflex",
+  "short_name": "Megaflex",
+  "start_url": ".",
+  "theme_color": "#1b1b36"
+}

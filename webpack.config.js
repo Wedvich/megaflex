@@ -8,6 +8,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -24,7 +25,7 @@ const plugins = [
 ];
 
 if (isProduction) {
-  plugins.push(new MiniCssExtractPlugin());
+  plugins.push(new MiniCssExtractPlugin(), new CopyPlugin([{ from: './src/manifest.json' }]));
 }
 
 if (process.env.ANALYZE) {
@@ -84,6 +85,7 @@ const config = {
 if (!isProduction) {
   config.devServer = {
     compress: isProduction,
+    contentBase: path.resolve(__dirname, 'dist'),
     historyApiFallback: true,
     hot: !isProduction,
     http2: true,
