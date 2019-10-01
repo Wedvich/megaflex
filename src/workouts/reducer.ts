@@ -23,8 +23,69 @@ const initialState: WorkoutsState = {
         },
       ],
     },
+    '2': {
+      id: '2',
+      exercises: [
+        {
+          exerciseId: 'bench-press',
+          name: 'Bench press',
+          sets: '5',
+          reps: '5',
+          weight: '70',
+        },
+        {
+          exerciseId: 'incline-db-press',
+          name: 'Incline dumbbell press',
+          sets: '3',
+          reps: '10',
+          weight: '25',
+        },
+        {
+          exerciseId: 'parallel-bar-dip',
+          name: 'Parallel bar dip',
+          sets: '3',
+          reps: '15',
+          weight: '0',
+        },
+        {
+          exerciseId: 'push-up',
+          name: 'Push-up',
+          sets: '5',
+          reps: '15',
+          weight: '0',
+        },
+        {
+          exerciseId: 'barbell-pullover',
+          name: 'Barbell pullover',
+          sets: '2',
+          reps: '15',
+          weight: '20',
+        },
+        {
+          exerciseId: 'cable-crossover-fly',
+          name: 'Cable crossover fly',
+          sets: '3',
+          reps: '20',
+          weight: '0',
+        },
+        {
+          exerciseId: 'rope-push-down',
+          name: 'Rope push-down',
+          sets: '3',
+          reps: '10',
+          weight: '20',
+        },
+        {
+          exerciseId: 'reverse-push-down',
+          name: 'Reverse push-down',
+          sets: '3',
+          reps: '10',
+          weight: '20',
+        },
+      ],
+    },
   },
-  allIds: ['1'],
+  allIds: ['1', '2'],
 };
 
 const workoutsReducer: Reducer<WorkoutsState, WorkoutsAction> = (state = initialState, action) => {

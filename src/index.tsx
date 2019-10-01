@@ -7,11 +7,15 @@ import configureStore from './store';
 import App from './App';
 import { RootState } from './store/rootReducer';
 import { DeepPartial } from 'redux';
+import { appSeed } from './store/rootReducer';
 
 const cachedState: string | null | DeepPartial<RootState> = localStorage.getItem('cache');
 let preloadedState: DeepPartial<RootState> | undefined;
 if (cachedState) preloadedState = JSON.parse(cachedState);
-
+if (!preloadedState || !preloadedState.app || preloadedState.app < appSeed) {
+  localStorage.clear();
+  preloadedState = undefined;
+}
 const store = configureStore(preloadedState);
 
 const Root = () => (

@@ -8,7 +8,7 @@ import './app.scss';
 import { WorkoutModel } from './workouts/types';
 
 const App = () => {
-  const workoutId = '1';
+  const workoutId = '2';
   const workout = useSelector<RootState, WorkoutModel>(state => state.workouts.byId[workoutId]);
   const dispatch = useDispatch();
 

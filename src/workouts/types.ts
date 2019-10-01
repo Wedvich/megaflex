@@ -23,4 +23,5 @@ export enum WorkoutsActionTypes {
   UpdateExercise = 'workouts:update-exercise',
 }
 
+// FIXME: This doesn't really work in the reducer.
 export type WorkoutsAction = ReturnType<typeof actions[keyof typeof actions]>;
