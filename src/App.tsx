@@ -33,6 +33,7 @@ const App = () => {
         lockAxis="y"
         useDragHandle
         useWindowAsScrollContainer
+        workoutId={workoutId}
       />
       <button className="reset-button" onClick={onResetClicked}>
         Reset

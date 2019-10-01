@@ -20,6 +20,7 @@ export interface WorkoutExerciseModel {
 
 export enum WorkoutsActionTypes {
   ReorderExercise = 'workouts:reorder-exercise',
+  UpdateExercise = 'workouts:update-exercise',
 }
 
 export type WorkoutsAction = ReturnType<typeof actions[keyof typeof actions]>;

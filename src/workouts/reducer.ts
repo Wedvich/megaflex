@@ -45,6 +45,28 @@ const workoutsReducer: Reducer<WorkoutsState, WorkoutsAction> = (state = initial
         },
       };
     }
+
+    case WorkoutsActionTypes.UpdateExercise: {
+      // Don't do anything if the workout doesn't exist.
+      if (!state.allIds.includes(action.workoutId)) return state;
+
+      const workout = { ...state.byId[action.workoutId] };
+      workout.exercises = [...workout.exercises];
+
+      workout.exercises[action.exerciseIndex] = {
+        ...workout.exercises[action.exerciseIndex],
+        ...action.updatedExercise,
+      };
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.workoutId]: workout,
+        },
+      };
+    }
+
     default:
       return state;
   }
