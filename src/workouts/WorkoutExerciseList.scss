@@ -2,3 +2,24 @@
   margin: 0;
   padding: 0;
 }
+
+._temp-edit-row {
+  align-items: center;
+  display: flex;
+  margin-bottom: 16px;
+
+  label {
+    flex: .5;
+    padding-right: 8px;
+  }
+
+  input {
+    border: thin solid rgba(0, 0, 0, .8);
+    flex: .5;
+    padding: 8px;
+  }
+
+  &:first-child {
+    margin-top: 32px;
+  }
+}

@@ -56,34 +56,23 @@ export const WorkoutExerciseList: React.FC<WorkoutExerciseListProps> = ({ items,
       <Modal isOpen={isModalOpen} close={closeModal}>
         {(typeof editedExerciseIndex !== 'undefined' && (
           <div style={{ width: '100%', height: '100%' }}>
-            <div>
+            <div className="_temp-edit-row">
               <label>Sets</label>
-              <input
-                id="edit-exercise-sets"
-                type="text"
-                defaultValue={items[editedExerciseIndex].sets}
-                style={{ border: '1px solid black' }}
-              />
+              <input id="edit-exercise-sets" type="text" defaultValue={items[editedExerciseIndex].sets} />
             </div>
-            <div>
+            <div className="_temp-edit-row">
               <label>Reps</label>
-              <input
-                id="edit-exercise-reps"
-                type="text"
-                defaultValue={items[editedExerciseIndex].reps}
-                style={{ border: '1px solid black' }}
-              />
+              <input id="edit-exercise-reps" type="text" defaultValue={items[editedExerciseIndex].reps} />
             </div>
-            <div>
+            <div className="_temp-edit-row">
               <label>Weight</label>
-              <input
-                id="edit-exercise-weight"
-                type="text"
-                defaultValue={items[editedExerciseIndex].weight}
-                style={{ border: '1px solid black' }}
-              />
+              <input id="edit-exercise-weight" type="text" defaultValue={items[editedExerciseIndex].weight} />
             </div>
-            <button onClick={saveExercise}>Save</button>
+            <div className="button-group">
+              <button onClick={saveExercise} className="reset-button">
+                Save
+              </button>
+            </div>
           </div>
         )) ||
           null}
